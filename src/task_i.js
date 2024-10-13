@@ -1,0 +1,15 @@
+function Car(name, volume, isTankFull){
+    this.name = name;
+    this.volume = volume;
+    this.isTankFull = isTankFull;
+    this.reserve = function() {
+        if(!isTankFull) return "Please fill up the tank in " + name + "!";
+        return "You are good to go " + name + "!";
+    }
+}
+
+const toyota = new Car("Toyota Avensis", 2.0, true)
+const bmw = new Car("BMW E36", 1.0, false)
+
+console.log(toyota.reserve())
+console.log(bmw.reserve())
