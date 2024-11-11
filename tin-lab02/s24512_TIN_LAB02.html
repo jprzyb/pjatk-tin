@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+        <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #4c666b;
+            color: #333;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #29cf8d;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            padding: 30px;
+			margin: 10px
+            border-radius: 10px;
+			font-weight: bold;
+			text-align: center;
+        }
+
+        label {
+            font-size: 1em;
+            margin-bottom: 5px;
+        }
+
+        input {
+            padding: 10px;
+            border-radius: 50px;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+
+        .error {
+            color: #e74c3c;
+            font-size: 0.7em;
+			font-weight: bold;
+            margin-top: -5px;
+            margin-bottom: 5px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #3aba87;
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-size: 1em;
+        }
+
+        button:hover {
+            background-color: #29cf8d;
+        }
+
+        table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 600px;
+            background-color: #fff;
+        }
+		
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+		
+		td:first-child {
+		background-color: #f0f0f0;
+		color: #555;
+		}
+
+        th {
+            background-color: #3aba87;
+            color: #fff;
+            font-weight: bold;
+        }
+		
+		footer {
+			background-color: #3e5357
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Validation Form</h1>
+    <form id="form">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required value="Bob">
+        <span class="error" id="errorName"></span>
+        
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" required value="bob@bobmail.com">
+        <span class="error" id="errorEmail"></span>
+
+        <label for="age">Age</label>
+        <input type="number" id="age" name="age" required value="22">
+        <span class="error" id="errorAge"></span>
+
+        <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+
+    <table id="resultsTable">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+	
+	 <footer class="footer">
+        <p>Jakub Przybylski.</p>
+        <p>s24512@pjwstk.edu.pl</p>
+    </footer>
+
+    <script>
+		let rowNo = 0
+	
+        function submitForm() {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const age = document.getElementById('age').value.trim();
+			console.log(name);
+			console.log(email);
+			console.log(age);
+			console.log('============');
+
+            let valid = true;
+
+            document.getElementById('errorName').textContent = '';
+            document.getElementById('errorEmail').textContent = '';
+            document.getElementById('errorAge').textContent = '';
+
+            if (name.length < 3) {
+                document.getElementById('errorName').textContent = 'Name must be at least 3 characters!';
+                valid = false;
+            }
+
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!regex.test(email)) {
+                document.getElementById('errorEmail').textContent = 'Enter a valid email!';
+                valid = false;
+            }
+
+            if (age < 18 || age > 120) {
+                document.getElementById('errorAge').textContent = 'Age must be between 18 and 120!';
+                valid = false;
+            }
+
+            if (valid) {
+                const table = document.getElementById('resultsTable').getElementsByTagName('tbody')[0];
+                const newRow = table.insertRow();
+
+				rowNo++;
+                newRow.insertCell(0).textContent = rowNo;
+                newRow.insertCell(1).textContent = name;
+                newRow.insertCell(2).textContent = email;
+                newRow.insertCell(3).textContent = age + ' y.o.';
+
+            }
+        }
+    </script>
+</body>
+</html>
