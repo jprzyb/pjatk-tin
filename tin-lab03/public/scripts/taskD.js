@@ -40,7 +40,6 @@ function taskD() {
         id += name.toUpperCase().charAt(0);
 
         id += email.split('@')[0].charAt(0);
-        id += email.split('.')[0].charAt(0);
         id += email.split('.')[1].charAt(0);
 
         id += "-"+age+"-";
@@ -48,6 +47,11 @@ function taskD() {
         id += phone.split("-")[0].charAt(0);
         id += phone.split("-")[1].charAt(1);
         id += phone.split("-")[2].charAt(2);
+
+        let date = Date.now().toString();
+
+        id += '-'+date.charAt(date.length-1);
+        id += date.charAt(date.length-2);
 
         let url = `id_generation.html?id=${encodeURIComponent(id)}`;
         window.location.href = url;
