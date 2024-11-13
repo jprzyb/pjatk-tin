@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tin-lab03</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <h1>Choose task</h1>
+
+    <div class="button-container">
+        <button onclick="taskA()" id="taskA">Task A</button>
+        <button onclick="redirectToFormB()" id="taskB">Task B</button>
+        <button onclick="redirectToFormC()" id="taskC">Task C</button>
+        <button onclick="redirectToFormD()" id="taskD">Task D</button>
+        <button id="taskE">Task E</button>
+    </div>
+
+    <img src="/images/logo.jpg" alt="Logo" width="300">
+    <label id="taskALabel"></label>
+
+    <script src="/scripts/taskA.js"></script>
+    <script src="/scripts/taskB.js"></script>
+    <script src="/scripts/taskC.js"></script>
+    <script src="/scripts/taskD.js"></script>
+<!--    <script src="/scripts/taskE.js"></script>-->
+</body>
+</html>

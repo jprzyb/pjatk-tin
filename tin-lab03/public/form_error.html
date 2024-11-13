@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>results</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<h1>User Information</h1>
+
+<div class="label-container">
+  <p>Error: <span id="error"></span></p>
+</div>
+
+<script>
+  function getQueryParams() {
+    const urlParams = new URLSearchParams(window.location.search);
+    let error = urlParams.get('error');
+    document.getElementById('error').textContent = error;
+  }
+  window.onload = getQueryParams;
+</script>
+
+</body>
+</html>
