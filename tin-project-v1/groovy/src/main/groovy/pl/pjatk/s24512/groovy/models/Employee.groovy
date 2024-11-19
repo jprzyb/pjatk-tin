@@ -3,7 +3,7 @@ package pl.pjatk.s24512.groovy.models
 class Employee {
     Long id
     String name
-    Long pesel
-    String surename
+    String pesel
+    String surname
     Date employmentDate
 }

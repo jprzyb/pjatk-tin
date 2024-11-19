@@ -8,5 +8,5 @@ class Campaign {
     Date startDate
     Date endDate
     Long empId
-    Long cliId
+    public Long cliId
 }
