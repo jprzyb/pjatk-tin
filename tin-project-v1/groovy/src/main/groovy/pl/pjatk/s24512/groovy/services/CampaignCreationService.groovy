@@ -12,7 +12,7 @@ class CampaignCreationService {
     @Autowired
     JdbcTemplate jdbcTemplate
 
-     List<Creation> getCampaignsCreationsByCampId(long camp_id) {
+     List<CampaignCreation> getCampaignsCreationsByCampId(long camp_id) {
          String sql = "SELECT * FROM campaign_creation WHERE camp_id = ?"
 
          try {
@@ -24,14 +24,14 @@ class CampaignCreationService {
                                  campId:  rs.getLong("camp_id"),
                                  creaId: rs.getLong("crea_id")
                          )
-                     } as org.springframework.jdbc.core.RowMapper<Creation>
+                     } as org.springframework.jdbc.core.RowMapper<CampaignCreation>
              )
          } catch (EmptyResultDataAccessException e) {
              return null
          }
      }
 
-    List<Creation> getCampaignsCreationsByCreaId(long crea_id) {
+    List<CampaignCreation> getCampaignsCreationsByCreaId(long crea_id) {
         String sql = "SELECT * FROM campaign_creation WHERE crea_id = ?"
 
         try {
@@ -43,7 +43,7 @@ class CampaignCreationService {
                                 campId:  rs.getLong("camp_id"),
                                 creaId: rs.getLong("crea_id")
                         )
-                    } as org.springframework.jdbc.core.RowMapper<Creation>
+                    } as org.springframework.jdbc.core.RowMapper<CampaignCreation>
             )
         } catch (EmptyResultDataAccessException e) {
             return null
