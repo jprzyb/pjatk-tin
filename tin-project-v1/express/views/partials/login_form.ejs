@@ -1,0 +1,43 @@
+<form action="" onsubmit="return sendLogin(event)">
+    <div class="form-group">
+        <label for="username">login</label>
+        <input type="text" id="login" name="login" placeholder="login" required>
+    </div>
+    <div class="form-group">
+        <label for="password">password</label>
+        <input type="password" id="password" name="password" placeholder="Password" required>
+    </div>
+    <button type="submit" class="btn">login</button>
+</form>
+
+<script>
+    function sendLogin(event) {
+        event.preventDefault();
+
+        const login = document.getElementById('login').value;
+        const password = document.getElementById('password').value;
+
+        console.log('Login:', login);
+        console.log('Password:', password);
+
+        fetch(`http://localhost:8080/api/login?login=${encodeURIComponent(login)}&password=${encodeURIComponent(password)}`, {
+            method: 'GET',
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+
+                return response.json();
+            })
+            .catch(error => {
+                console.error('ERROR:', error);
+            });
+        return false;
+    }
+</script>

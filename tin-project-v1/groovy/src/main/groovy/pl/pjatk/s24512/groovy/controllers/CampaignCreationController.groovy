@@ -6,6 +6,8 @@ import pl.pjatk.s24512.groovy.models.CampaignCreation
 import pl.pjatk.s24512.groovy.services.CampaignCreationService
 
 @RestController
+@RequestMapping("/api")
+@CrossOrigin
 class CampaignCreationController {
 
     @Autowired
