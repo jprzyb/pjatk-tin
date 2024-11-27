@@ -16,6 +16,10 @@ app.get('/taska', (req, res) => {
     res.render('pages/taska');
 });
 
+app.get('/taskb', (req, res) => {
+    res.render('pages/taskb');
+});
+
 //backend task a
 app.post('/taska_submit', (req, res) => {
     // console.log(req.body);

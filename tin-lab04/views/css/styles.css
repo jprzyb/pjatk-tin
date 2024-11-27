@@ -9,7 +9,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /*background-color: #4c666b;*/
     background-image: url('../images/background.jpg'); /* Ścieżka do obrazu */
     background-size: cover; /* Dopasowanie obrazu do ekranu */
     background-repeat: no-repeat; /* Zapobiega powtarzaniu obrazu */
@@ -20,6 +19,12 @@ body {
 
 h1 {
     font-size: 2em;
+    margin-bottom: 20px;
+    color: #29cf8d;
+}
+
+h2 {
+    font-size: 1em;
     margin-bottom: 20px;
     color: #29cf8d;
 }
@@ -118,4 +123,42 @@ a:hover {
 
 img {
     max-width: 50%;
+}
+
+
+.slider-container {
+    width: 600px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.slide {
+    min-width: 600px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.container text-center mt-5{
+    padding: 20px;
+    margin: 20px;
+}
+
+.crypto{
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 20px;
 }
