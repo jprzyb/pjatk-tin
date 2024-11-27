@@ -1,0 +1,61 @@
+<form id="my_form">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" value="Bob" pattern=".{3,}" required>
+
+    <label for="email">E-mail</label>
+    <input type="text" id="email" name="email"
+           value="bob@bobmail.com"
+           pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+           required>
+
+    <label for="age">Age</label>
+    <input type="number" id="age" name="age"
+           value="22"  min="18" max="120"
+           required>
+
+    <label for="phone">Phone</label>
+    <input type="text" id="phone" name="phone"
+           value="111-222-333"
+           pattern="\d{3}-\d{3}-\d{3}"
+           required>
+
+    <button type="submit">Submit</button>
+</form>
+
+<div id="response"></div>
+
+<script>
+    document.getElementById('my_form').addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        const form = event.target;
+
+        const formData = {
+            name: form.name.value,
+            email: form.email.value,
+            age: form.age.value,
+            phone: form.phone.value
+        };
+
+
+        try {
+            const response = await fetch('/taska_submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                document.getElementById('response').innerText = result.message;
+            } else {
+                document.getElementById('response').innerText = 'Error!';
+            }
+        } catch (error) {
+            document.getElementById('response').innerText = 'Wystąpił błąd. Sprawdź połączenie z serwerem.';
+            console.error('Błąd:', error);
+        }
+    });
+</script>
