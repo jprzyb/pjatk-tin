@@ -9,10 +9,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url('../images/background.jpg'); /* Ścieżka do obrazu */
-    background-size: cover; /* Dopasowanie obrazu do ekranu */
-    background-repeat: no-repeat; /* Zapobiega powtarzaniu obrazu */
-    background-position: center; /* Ustawienie obrazu na środku */
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     color: #333;
     padding: 20px;
 }
@@ -161,4 +161,11 @@ img {
     padding: 20px;
     margin: 20px;
     border-radius: 20px;
+}
+
+.additionalData{
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

@@ -8,6 +8,13 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/views'));
 app.use(express.json());
 
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+});
+
 app.get('/', function(req, res) {
     res.render('pages/index');
 });
@@ -22,7 +29,6 @@ app.get('/taskb', (req, res) => {
 
 //backend task a
 app.post('/taska_submit', (req, res) => {
-    // console.log(req.body);
 
     let {valid, error} = validateWithPhone(req.body.name, req.body.email, req.body.age, req.body.phone);
 

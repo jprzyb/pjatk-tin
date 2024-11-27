@@ -1,8 +1,8 @@
-const apiUrl = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=pepe';
+const pepeUrl = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=pepe&x_cg_demo_api_key=CG-rG22SfN5NJ2SnFXmeWyvpJ67';
 
 async function fetchData() {
     try {
-        const response = await fetch(apiUrl);
+        const response = await fetch(pepeUrl);
 
         if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -12,12 +12,12 @@ async function fetchData() {
         displayData(data);
     } catch (error) {
         console.error('ERROR:', error);
-        document.querySelector('.pepeData').innerHTML = 'ERROR: Could not fetch data';
+        document.querySelector('.crypto_data').innerHTML = 'ERROR: Could not fetch data';
     }
 }
 
 function displayData(data) {
-    const dataElement = document.querySelector('.pepeData');
+    const dataElement = document.querySelector('.crypto_data');
     const currentDate = document.querySelector('.currentDate');
 
     const price = data[0].current_price;
