@@ -5,24 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3aed74b9-f5f2-4e24-9867-2becde3249c4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../tin-lab04/views/partials/slider.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/main/slider.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/views/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pages/login.ejs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pages/main.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/index.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/partials/head.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/campaigns/head.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/partials/campaigns/campaigns.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/campaigns/campaigns.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/partials/header.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/header.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/partials/login_form.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/login/login_form.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/partials/login_header.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/login/login_header.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/scripts/sendLogin.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/scripts/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../groovy/src/main/groovy/pl/pjatk/s24512/groovy/controllers/EmployeeController.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/../groovy/src/main/groovy/pl/pjatk/s24512/groovy/controllers/EmployeeController.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../groovy/src/main/groovy/pl/pjatk/s24512/groovy/controllers/LoginController.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/../groovy/src/main/groovy/pl/pjatk/s24512/groovy/controllers/LoginController.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../groovy/src/main/groovy/pl/pjatk/s24512/groovy/models/Login.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/../groovy/src/main/groovy/pl/pjatk/s24512/groovy/models/Login.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../groovy/src/main/groovy/pl/pjatk/s24512/groovy/services/LoginService.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/../groovy/src/main/groovy/pl/pjatk/s24512/groovy/services/LoginService.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/scripts/campaigns.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/scripts/campaigns.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +44,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/ASRock/OneDrive/Pulpit/repositories/pjatk-tin/tin-project/express/views/partials/new_campaign",
+    "last_opened_file_path": "C:/Users/ASRock/OneDrive/Pulpit/repositories/pjatk-tin/tin-project/express/views/partials/user",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -74,11 +62,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ASRock\OneDrive\Pulpit\repositories\pjatk-tin\tin-project\express\views\partials\user" />
       <recent name="C:\Users\ASRock\OneDrive\Pulpit\repositories\pjatk-tin\tin-project\express\views\partials\new_campaign" />
       <recent name="C:\Users\ASRock\OneDrive\Pulpit\repositories\pjatk-tin\tin-project\express\views\scripts" />
       <recent name="C:\Users\ASRock\OneDrive\Pulpit\repositories\pjatk-tin\tin-project\express\views\pages" />
       <recent name="C:\Users\ASRock\OneDrive\Pulpit\repositories\pjatk-tin\tin-project\express\views\partials\main" />
-      <recent name="C:\Users\ASRock\OneDrive\Pulpit\repositories\pjatk-tin\tin-project\express\views\partials" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ASRock\OneDrive\Pulpit\repositories\pjatk-tin\tin-project\express\views\partials\campaigns" />
@@ -113,7 +101,7 @@
       <workItem from="1732789793054" duration="5231000" />
       <workItem from="1733327054150" duration="536000" />
       <workItem from="1733328503148" duration="7181000" />
-      <workItem from="1733391318180" duration="16351000" />
+      <workItem from="1733391318180" duration="17712000" />
     </task>
     <servers />
   </component>

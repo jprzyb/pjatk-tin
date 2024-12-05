@@ -36,11 +36,51 @@ function addCampaignsToTable(campaigns) {
         cellCliId.textContent = campaign.cliId;
         row.appendChild(cellCliId);
 
-        // Dodaj wiersz do tabeli
         tableBody.appendChild(row);
     });
 }
 
 window.onload = function() {
     addCampaignsToTable(campaignsData);
+    document.querySelectorAll('th').forEach(header => {
+        header.addEventListener('click', () => {
+            const column = header.getAttribute('data-column');
+            const isAscending = header.classList.contains('asc');
+            document.querySelectorAll('th').forEach(h => h.classList.remove('asc', 'desc'));
+            header.classList.toggle('asc', !isAscending);
+            header.classList.toggle('desc', isAscending);
+
+            sortTable(column, !isAscending);
+        });
+    });
 };
+
+function sortTable(column, ascending = true) {
+    const sortedData = [...campaignsData].sort((a, b) => {
+        if (typeof a[column] === 'string') {
+            return ascending ? a[column].localeCompare(b[column]) : b[column].localeCompare(a[column]);
+        }
+        return ascending ? a[column] - b[column] : b[column] - a[column];
+    });
+    populateTable(sortedData);
+}
+
+function populateTable(data) {
+    const tableBody = document.querySelector('#campaignsTable tbody');
+    tableBody.innerHTML = '';
+
+    data.forEach(campaign => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+                <td>${campaign.id}</td>
+                <td>${campaign.name}</td>
+                <td>${campaign.plannedRates}</td>
+                <td>${campaign.currentRates}</td>
+                <td>${campaign.startDate}</td>
+                <td>${campaign.endDate}</td>
+                <td>${campaign.empId}</td>
+                <td>${campaign.cliId}</td>
+            `;
+        tableBody.appendChild(row);
+    });
+}

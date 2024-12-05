@@ -63,6 +63,15 @@ app.get('/new_campaign', async (req, res) => {
     }
 })
 
+app.get('/user', async (req, res) => {
+    if (req.session.user) {
+        // console.log('[/user] Req session usr.: ', req.session.user);
+        res.render('pages/user', { user: req.session.user });
+    } else {
+        res.redirect('/login');
+    }
+})
+
 app.get('/logout', (req, res) => {
     req.session.destroy((err) => {
         if (err) {
