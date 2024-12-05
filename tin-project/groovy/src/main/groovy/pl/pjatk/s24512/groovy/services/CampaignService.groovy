@@ -6,7 +6,9 @@ import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.core.RowMapper
 import org.springframework.stereotype.Service
 import pl.pjatk.s24512.groovy.models.Campaign
-import pl.pjatk.s24512.groovy.models.Creation
+
+import java.sql.ResultSet
+import java.sql.SQLException
 
 @Service
 class CampaignService {
@@ -31,9 +33,9 @@ class CampaignService {
                                 startDate: rs.getDate("start_date"),
                                 endDate: rs.getDate("end_date"),
                         )
-                    } as org.springframework.jdbc.core.RowMapper<Campaign>
+                    } as RowMapper<Campaign>
             )
-        } catch (EmptyResultDataAccessException e) {
+        } catch (EmptyResultDataAccessException ignored) {
             return null
         }
     }
@@ -58,7 +60,7 @@ class CampaignService {
                          )
                      } as RowMapper<Campaign>
              )
-         } catch (EmptyResultDataAccessException e) {
+         } catch (EmptyResultDataAccessException ignored) {
              return null
          }
      }
@@ -72,8 +74,36 @@ class CampaignService {
                     [campaign.name, campaign.plannedRates, campaign.currentRates, campaign.startDate, campaign.endDate, campaign.empId, campaign.cliId] as Object[]
             )
             return true
-        } catch (EmptyResultDataAccessException e) {
+        } catch (EmptyResultDataAccessException ignored) {
             return false
         }
     }
+
+    Campaign latestCampaign() {
+        String sql = "SELECT * FROM campaign ORDER BY id DESC LIMIT 1";
+
+        try {
+            return jdbcTemplate.queryForObject(
+                    sql,
+                    new RowMapper<Campaign>() {
+                        @Override
+                        public Campaign mapRow(ResultSet rs, int rowNum) throws SQLException {
+                            return new Campaign(
+                                    id: rs.getLong("id"),
+                                    empId: rs.getLong("emp_id"),
+                                    cliId: rs.getLong("client_id"),
+                                    plannedRates:  rs.getLong("planned_rates"),
+                                    currentRates:  rs.getLong("current_rates"),
+                                    name: rs.getString("name"),
+                                    startDate:  rs.getDate("start_date"),
+                                    endDate:  rs.getDate("end_date")
+                            )
+                        }
+                    }
+            );
+        } catch (EmptyResultDataAccessException ignored) {
+            return null;
+        }
+    }
+
 }

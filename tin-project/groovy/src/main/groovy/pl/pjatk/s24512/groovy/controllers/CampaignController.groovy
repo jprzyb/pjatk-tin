@@ -38,4 +38,8 @@ class CampaignController {
         return campaignService.createCampaign(campaign)
     }
 
+    @GetMapping("/latest_campaign")
+    Campaign latestCampaign() {
+        return campaignService.latestCampaign()
+    }
 }

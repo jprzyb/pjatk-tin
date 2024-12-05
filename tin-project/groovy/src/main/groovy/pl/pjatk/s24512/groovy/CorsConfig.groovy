@@ -12,13 +12,13 @@ class CorsConfig {
     @Bean
     CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration()
-        config.addAllowedOrigin("http://localhost:3000")  // Dopuszczenie konkretnego pochodzenia
-        config.addAllowedHeader("*")                      // Dopuszczenie wszystkich nagłówków
-        config.addAllowedMethod("*")                      // Dopuszczenie wszystkich metod (GET, POST itd.)
-        config.setAllowCredentials(true)                  // Obsługa ciasteczek / autoryzacji
+        config.addAllowedOrigin("http://localhost:3000")
+        config.addAllowedHeader("*")
+        config.addAllowedMethod("*")
+        config.setAllowCredentials(true)
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource()
-        source.registerCorsConfiguration("/**", config)   // Stosowanie konfiguracji dla wszystkich endpointów
+        source.registerCorsConfiguration("/**", config)
 
         return new CorsFilter(source)
     }

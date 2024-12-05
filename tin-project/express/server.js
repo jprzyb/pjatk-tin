@@ -63,6 +63,15 @@ app.get('/new_campaign', async (req, res) => {
     }
 })
 
+app.get('/new_creation', async (req, res) => {
+    let id = fetchLatestCampaign().id;
+    if (req.session.user) {
+        res.render('pages/new_creation', { user: req.session.user, id: id});
+    } else {
+        res.redirect('/login');
+    }
+})
+
 app.get('/user', async (req, res) => {
     if (req.session.user) {
         // console.log('[/user] Req session usr.: ', req.session.user);
@@ -150,6 +159,27 @@ const fetchCampaigns = async (id) => {
 const fetchClients = async () => {
     try {
         const response = await fetch(`http://localhost:8080/api/clients`, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error:', error);
+        throw error;
+    }
+};
+
+const fetchLatestCampaign = async () => {
+    try {
+        const response = await fetch(`http://localhost:8080/api/latest_campaign`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json'

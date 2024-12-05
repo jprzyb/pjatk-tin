@@ -58,6 +58,7 @@ const createCampaign = async (name, plannedRates, startDate, endDate, cliId, cur
             const data = await response.json();
             console.log('Campaign created successfully:', data);
             alert('Campaign created successfully');
+            window.location.href = `/new_creation?id=${encodeURIComponent(data.id)}`;
         } else {
             const error = await response.text();
             console.error('Error creating campaign:', error);
