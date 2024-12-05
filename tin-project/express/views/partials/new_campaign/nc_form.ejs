@@ -1,0 +1,29 @@
+<form id="new-campaign">
+
+        <h1>New campaign</h1>
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="plannedRates">Estimated rates:</label>
+        <input type="number" id="plannedRates" name="plannedRates" required>
+
+        <label for="startDate">Start date:</label>
+        <input type="date" id="startDate" name="startDate" required>
+
+        <label for="endDate">End date:</label>
+        <input type="date" id="endDate" name="endDate" required>
+
+        <label for="cliId">Client id :</label>
+        <input type="number" id="cliId" name="cliId" required>
+
+        <label for="empId">Employee id :</label>
+        <input type="number" id="empId" name="empId" required value=<%= user.id %> disabled>
+
+        <label for="currentRates">Current rates :</label>
+        <input type="number" id="currentRates" name="currentRates" required value=0 disabled>
+
+
+        <button type="submit">Submit</button>
+        <label for="error"></label>
+</form>

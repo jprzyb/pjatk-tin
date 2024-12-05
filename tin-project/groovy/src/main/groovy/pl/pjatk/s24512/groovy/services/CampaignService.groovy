@@ -3,6 +3,7 @@ package pl.pjatk.s24512.groovy.services
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.dao.EmptyResultDataAccessException
 import org.springframework.jdbc.core.JdbcTemplate
+import org.springframework.jdbc.core.RowMapper
 import org.springframework.stereotype.Service
 import pl.pjatk.s24512.groovy.models.Campaign
 import pl.pjatk.s24512.groovy.models.Creation
@@ -55,7 +56,7 @@ class CampaignService {
                                  startDate: rs.getDate("start_date"),
                                  endDate: rs.getDate("end_date"),
                          )
-                     } as org.springframework.jdbc.core.RowMapper<Campaign>
+                     } as RowMapper<Campaign>
              )
          } catch (EmptyResultDataAccessException e) {
              return null

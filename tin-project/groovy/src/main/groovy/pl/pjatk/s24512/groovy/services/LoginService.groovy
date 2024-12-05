@@ -3,8 +3,14 @@ package pl.pjatk.s24512.groovy.services
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.dao.EmptyResultDataAccessException
 import org.springframework.jdbc.core.JdbcTemplate
+import org.springframework.jdbc.core.RowMapper
 import org.springframework.stereotype.Service
+import pl.pjatk.s24512.groovy.logs.Logger
 import pl.pjatk.s24512.groovy.models.Login
+
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.sql.Date
 
 @Service
 class LoginService {
@@ -23,14 +29,50 @@ class LoginService {
                         new Login(
                                 empId: rs.getLong("emp_id"),
                                 login: rs.getString("login"),
-                                pass: rs.getString("pass")
+                                pass: rs.getString("pass"),
+                                session_date: rs.getDate("session_exp_date")
                         )
-                    } as org.springframework.jdbc.core.RowMapper<Login>
+                    } as RowMapper<Login>
             )
         } catch (EmptyResultDataAccessException e) {
+            Logger.error(e.getStackTrace())
             return null
         }
     }
 
 
+    void updateSession(long empId) {
+        def nowPlusOneHour = LocalDateTime.now().plusHours(1)
+        def formattedDate = nowPlusOneHour.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
+
+        String sql = "UPDATE login SET session_exp_date = ? WHERE emp_id = ?"
+
+        try {
+            jdbcTemplate.update(sql, [formattedDate, empId] as Object[])
+        } catch (EmptyResultDataAccessException e) {
+            e.printStackTrace()
+        } catch (Exception e) {
+            e.printStackTrace()
+        }
+        Logger.info("Session updated!")
+    }
+
+    Date session(long empId) {
+        String sql = "SELECT session_exp_date FROM login WHERE emp_id = ?"
+
+        try {
+            Date date = jdbcTemplate.queryForObject(sql, [empId] as Object[], Date.class)
+            if (date != null) {
+                return date
+            } else {
+                return null
+            }
+        } catch (EmptyResultDataAccessException e) {
+            Logger.error("$empId - ${e.message}")
+            return null
+        } catch (Exception e) {
+            Logger.error("${e.message}")
+            return null
+        }
+    }
 }

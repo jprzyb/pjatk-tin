@@ -35,4 +35,9 @@ class ClientController {
         Campaign campaign = campaignService.getCampaignById(id)
         return clientService.getClientById(campaign.cliId)
     }
+
+    @GetMapping("/clients")
+    List<Client> getClients() {
+        return clientService.getClients()
+    }
 }

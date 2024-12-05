@@ -4,4 +4,5 @@ class Login {
     Long empId
     String login
     String pass
+    Date session_date
 }

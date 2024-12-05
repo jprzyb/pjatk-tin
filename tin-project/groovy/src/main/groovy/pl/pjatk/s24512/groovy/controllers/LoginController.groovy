@@ -1,11 +1,9 @@
 package pl.pjatk.s24512.groovy.controllers
 
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.web.bind.annotation.CrossOrigin
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.*
+import pl.pjatk.s24512.groovy.logs.Logger
 import pl.pjatk.s24512.groovy.models.Login
 import pl.pjatk.s24512.groovy.services.LoginService
 
@@ -23,7 +21,25 @@ class LoginController {
 
     @GetMapping("/login")
     Login login(@RequestParam("login") String login, @RequestParam("password") String password) {
-        return  loginService.login(login, password)
+        Login data = loginService.login(login, password)
+        if(data == null) {
+            return null
+        }
+        if(data.session_date.before(new Date())){
+            loginService.updateSession(data.empId)
+        }
+        return data
+    }
+
+    @GetMapping("/session")
+    public ResponseEntity<Boolean> session(@RequestParam("empId") long empId) {
+        boolean sessionValid = loginService.session(empId).before(new Date());
+        if (sessionValid) {
+            Logger.info("Session valid.");
+        } else {
+            Logger.info("Session invalid.");
+        }
+        return ResponseEntity.ok(sessionValid);
     }
 
 }

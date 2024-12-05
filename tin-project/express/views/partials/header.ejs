@@ -1,7 +1,9 @@
 <div class="container text-center mt-5">
-    <h1>Hello <%= name %>!</h1>
+    <h1>Hello <%= user.name %> !</h1>
     <br>
-    <button onclick="window.location.href='/home'">Home</button>
-    <button onclick="window.location.href='/myCampaigns'">MyCampaigns</button>
-    <button onclick="window.location.href='/myInfo'">MyInfo</button>
+    <button onclick="window.location.href='/index'">Home</button>
+    <button onclick="window.location.href='/campaigns'">Campaigns</button>
+    <button onclick="window.location.href='/new_campaign'">New Campaign</button>
+    <button onclick="window.location.href='/info'"><%= user.name %></button>
+    <button onclick="window.location.href='/logout'">Logout</button>
 </div>
