@@ -17,7 +17,7 @@ import pl.pjatk.s24512.groovy.services.CampaignService
 class CampaignController {
 
     @Autowired
-    private final CampaignService campaignService;
+    private final CampaignService campaignService
 
     CampaignController(CampaignService campaignService){
         this.campaignService = campaignService
@@ -34,12 +34,7 @@ class CampaignController {
     }
 
     @PostMapping("/campaign")
-    boolean createCampaign(@RequestBody Campaign campaign) {
+    Campaign createCampaign(@RequestBody Campaign campaign) {
         return campaignService.createCampaign(campaign)
-    }
-
-    @GetMapping("/latest_campaign")
-    Campaign latestCampaign() {
-        return campaignService.latestCampaign()
     }
 }

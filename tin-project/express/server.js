@@ -54,7 +54,6 @@ app.get('/campaignDetails', async (req, res) => {
     if (req.session.user) {
         try {
             const campaign = await fetchCampaign(id);
-            console.log(campaign);
             res.render('pages/campaign', { user: req.session.user, campaign:campaign });
         } catch (error) {
             res.status(500).send('Error fetching campaign');
@@ -75,9 +74,9 @@ app.get('/new_campaign', async (req, res) => {
 })
 
 app.get('/new_creation', async (req, res) => {
-    let id = fetchLatestCampaign().id;
+    const id = req.query.id;
     if (req.session.user) {
-        res.render('pages/new_creation', { user: req.session.user, id: id});
+        res.render('pages/new_creation', { user: req.session.user, id: id });
     } else {
         res.redirect('/login');
     }
@@ -170,27 +169,6 @@ const fetchCampaigns = async (id) => {
 const fetchClients = async () => {
     try {
         const response = await fetch(`http://localhost:8080/api/clients`, {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json'
-            }
-        });
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error('Error:', error);
-        throw error;
-    }
-};
-
-const fetchLatestCampaign = async () => {
-    try {
-        const response = await fetch(`http://localhost:8080/api/latest_campaign`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json'

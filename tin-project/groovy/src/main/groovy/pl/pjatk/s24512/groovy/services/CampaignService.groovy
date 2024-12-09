@@ -65,7 +65,7 @@ class CampaignService {
          }
      }
 
-    boolean createCampaign(Campaign campaign) {
+    Campaign createCampaign(Campaign campaign) {
         String sql = "INSERT INTO campaign (name, planned_rates, current_rates, start_date, end_date, emp_id, client_id) VALUES (?, ?, ?, ?, ?, ?, ?)"
 
         try {
@@ -73,37 +73,33 @@ class CampaignService {
                     sql,
                     [campaign.name, campaign.plannedRates, campaign.currentRates, campaign.startDate, campaign.endDate, campaign.empId, campaign.cliId] as Object[]
             )
-            return true
+            return lastInsert()
         } catch (EmptyResultDataAccessException ignored) {
-            return false
+            return null
         }
     }
 
-    Campaign latestCampaign() {
-        String sql = "SELECT * FROM campaign ORDER BY id DESC LIMIT 1";
+    private Campaign lastInsert() {
+        String selectSql = "SELECT * FROM campaign WHERE id = LAST_INSERT_ID()"
 
         try {
-            return jdbcTemplate.queryForObject(
-                    sql,
-                    new RowMapper<Campaign>() {
-                        @Override
-                        public Campaign mapRow(ResultSet rs, int rowNum) throws SQLException {
-                            return new Campaign(
-                                    id: rs.getLong("id"),
-                                    empId: rs.getLong("emp_id"),
-                                    cliId: rs.getLong("client_id"),
-                                    plannedRates:  rs.getLong("planned_rates"),
-                                    currentRates:  rs.getLong("current_rates"),
-                                    name: rs.getString("name"),
-                                    startDate:  rs.getDate("start_date"),
-                                    endDate:  rs.getDate("end_date")
-                            )
-                        }
-                    }
-            );
+            return jdbcTemplate.queryForObject(selectSql, new RowMapper<Campaign>() {
+                @Override
+                Campaign mapRow(ResultSet rs, int rowNum) throws SQLException {
+                    Campaign newCampaign = new Campaign()
+                    newCampaign.setId(rs.getLong("id"))
+                    newCampaign.setName(rs.getString("name"))
+                    newCampaign.setPlannedRates(rs.getLong("planned_rates"))
+                    newCampaign.setCurrentRates(rs.getLong("current_rates"))
+                    newCampaign.setStartDate(rs.getDate("start_date"))
+                    newCampaign.setEndDate(rs.getDate("end_date"))
+                    newCampaign.setEmpId(rs.getLong("emp_id"))
+                    newCampaign.setCliId(rs.getLong("client_id"))
+                    return newCampaign
+                }
+            })
         } catch (EmptyResultDataAccessException ignored) {
-            return null;
+            return null
         }
     }
-
 }

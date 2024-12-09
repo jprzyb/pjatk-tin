@@ -40,6 +40,7 @@ function addCampaignsToTable(campaigns) {
         tableBody.appendChild(row);
     });
     addRowClickEvent();
+    fixFooter();
 }
 
 
@@ -57,6 +58,7 @@ window.onload = function() {
             sortTable(column, !isAscending);
         });
     });
+    fixFooter();
 };
 
 function sortTable(column, ascending = true) {
@@ -88,18 +90,17 @@ function populateTable(data) {
         `;
         tableBody.appendChild(row);
     });
-
     addRowClickEvent();
+    fixFooter();
 }
 
 function addRowClickEvent() {
     const tableRows = document.querySelectorAll('#campaignsTable tbody tr');
     tableRows.forEach(row => {
-        console.log('Adding click event to row with data-id:', row.dataset.id);
         row.addEventListener('click', () => {
             const campaignId = row.dataset.id;
             if (!campaignId) {
-                alert('Brak ID kampanii!');
+                alert('Invalid campaign id!');
                 return;
             }
             window.location.href = `/campaignDetails?id=${campaignId}`;
@@ -107,3 +108,14 @@ function addRowClickEvent() {
     });
 }
 
+function fixFooter() {
+    const footer = document.querySelector('footer');
+    const table = document.querySelector('table');
+
+    if (table.offsetHeight > window.innerHeight) {
+        footer.style.position = 'relative';
+    } else {
+        footer.style.position = 'absolute';
+        footer.style.bottom = '0';
+    }
+}

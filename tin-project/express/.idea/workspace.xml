@@ -7,9 +7,9 @@
     <list default="true" id="3aed74b9-f5f2-4e24-9867-2becde3249c4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/views/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/partials/campaigns/campaigns.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/campaigns/campaigns.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/scripts/campaigns.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/scripts/campaigns.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../groovy/src/main/groovy/pl/pjatk/s24512/groovy/controllers/CampaignController.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/../groovy/src/main/groovy/pl/pjatk/s24512/groovy/controllers/CampaignController.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../groovy/src/main/groovy/pl/pjatk/s24512/groovy/services/CampaignService.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/../groovy/src/main/groovy/pl/pjatk/s24512/groovy/services/CampaignService.groovy" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +102,7 @@
       <workItem from="1733328503148" duration="7181000" />
       <workItem from="1733391318180" duration="19181000" />
       <workItem from="1733433974656" duration="4807000" />
-      <workItem from="1733752197004" duration="6602000" />
+      <workItem from="1733752197004" duration="10267000" />
     </task>
     <servers />
   </component>
