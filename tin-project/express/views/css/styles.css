@@ -25,7 +25,7 @@ h1 {
 }
 
 h2 {
-    font-size: 1em;
+    font-size: 1.5em;
     margin-bottom: 20px;
     color: #29cf8d;
 }
@@ -101,6 +101,9 @@ th:hover {
     background-color: #e2e2e2;
 }
 
+tr:hover {
+    background-color: #f0f0f0;
+}
 
 footer {
     color: #fff;
@@ -160,13 +163,6 @@ img {
     margin: 20px;
 }
 
-.crypto{
-    background-color: #fff;
-    padding: 20px;
-    margin: 20px;
-    border-radius: 20px;
-}
-
 .additionalData{
     font-family: Arial, sans-serif;
     display: flex;
@@ -181,6 +177,26 @@ img {
     margin: 10px;
     border-radius: 10px;
     font-weight: bold;
+    text-align: left;
+}
+
+.campaign-display{
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 10px;
     text-align: center;
 }
 
+.campaign-data-display{
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 10px;
+    font-weight: bold;
+    text-align: center;
+}

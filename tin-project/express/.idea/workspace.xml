@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="3aed74b9-f5f2-4e24-9867-2becde3249c4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../start-web-app.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/views/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/partials/campaigns/campaigns.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/campaigns/campaigns.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/scripts/campaigns.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/scripts/campaigns.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +43,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/ASRock/OneDrive/Pulpit/repositories/pjatk-tin/tin-project/express/views/partials/user",
+    "last_opened_file_path": "C:/Users/ASRock/OneDrive/Pulpit/repositories/pjatk-tin/tin-project/express/views/partials/campaignDetails",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -58,11 +61,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ASRock\OneDrive\Pulpit\repositories\pjatk-tin\tin-project\express\views\partials\campaignDetails" />
+      <recent name="C:\Users\ASRock\OneDrive\Pulpit\repositories\pjatk-tin\tin-project\express\views\pages" />
+      <recent name="C:\Users\ASRock\OneDrive\Pulpit\repositories\pjatk-tin\tin-project\express\views\partials\creation" />
       <recent name="C:\Users\ASRock\OneDrive\Pulpit\repositories\pjatk-tin\tin-project\express\views\partials\user" />
       <recent name="C:\Users\ASRock\OneDrive\Pulpit\repositories\pjatk-tin\tin-project\express\views\partials\new_campaign" />
-      <recent name="C:\Users\ASRock\OneDrive\Pulpit\repositories\pjatk-tin\tin-project\express\views\scripts" />
-      <recent name="C:\Users\ASRock\OneDrive\Pulpit\repositories\pjatk-tin\tin-project\express\views\pages" />
-      <recent name="C:\Users\ASRock\OneDrive\Pulpit\repositories\pjatk-tin\tin-project\express\views\partials\main" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ASRock\OneDrive\Pulpit\repositories\pjatk-tin\tin-project\express\views\partials\campaigns" />
@@ -98,10 +101,23 @@
       <workItem from="1733327054150" duration="536000" />
       <workItem from="1733328503148" duration="7181000" />
       <workItem from="1733391318180" duration="19181000" />
+      <workItem from="1733433974656" duration="4807000" />
+      <workItem from="1733752197004" duration="6602000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/views/scripts/creation.js</url>
+          <line>11</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

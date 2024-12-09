@@ -30,7 +30,6 @@ app.get('/login', (req, res) => {
 
 app.get('/index', (req, res) => {
     if (req.session.user) {
-        // console.log('[/index] Req session usr.: ', req.session.user);
         res.render('pages/index', { user: req.session.user });
     } else {
         res.redirect('/login');
@@ -39,14 +38,26 @@ app.get('/index', (req, res) => {
 
 app.get('/campaigns', async (req, res) => { // Dodajemy async do funkcji, aby używać await
     if (req.session.user) {
-        // console.log('[/campaigns] Req session usr.: ', req.session.user);
         try {
             const campaigns = await fetchCampaigns(req.session.user.id);
-            // console.log('[/campaigns] Campaigns: ', campaigns);
             res.render('pages/campaigns', { user: req.session.user, campaigns: JSON.stringify(campaigns) });
         } catch (error) {
-            // console.error('Error fetching campaigns:', error);
             res.status(500).send('Error fetching campaigns');
+        }
+    } else {
+        res.redirect('/login');
+    }
+});
+
+app.get('/campaignDetails', async (req, res) => {
+    const id = req.query.id;
+    if (req.session.user) {
+        try {
+            const campaign = await fetchCampaign(id);
+            console.log(campaign);
+            res.render('pages/campaign', { user: req.session.user, campaign:campaign });
+        } catch (error) {
+            res.status(500).send('Error fetching campaign');
         }
     } else {
         res.redirect('/login');
@@ -180,6 +191,27 @@ const fetchClients = async () => {
 const fetchLatestCampaign = async () => {
     try {
         const response = await fetch(`http://localhost:8080/api/latest_campaign`, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error:', error);
+        throw error;
+    }
+};
+
+const fetchCampaign = async (id) => {
+    try {
+        const response = await fetch(`http://localhost:8080/api/campaign?id=${encodeURIComponent(id)}`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json'

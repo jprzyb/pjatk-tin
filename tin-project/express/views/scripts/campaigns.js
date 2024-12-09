@@ -3,6 +3,7 @@ function addCampaignsToTable(campaigns) {
 
     campaigns.forEach(campaign => {
         const row = document.createElement("tr");
+        row.dataset.id = campaign.id;
 
         const cellId = document.createElement("td");
         cellId.textContent = campaign.id;
@@ -38,7 +39,10 @@ function addCampaignsToTable(campaigns) {
 
         tableBody.appendChild(row);
     });
+    addRowClickEvent();
 }
+
+
 
 window.onload = function() {
     addCampaignsToTable(campaignsData);
@@ -71,16 +75,35 @@ function populateTable(data) {
 
     data.forEach(campaign => {
         const row = document.createElement('tr');
+        row.dataset.id = campaign.id;
         row.innerHTML = `
-                <td>${campaign.id}</td>
-                <td>${campaign.name}</td>
-                <td>${campaign.plannedRates}</td>
-                <td>${campaign.currentRates}</td>
-                <td>${campaign.startDate}</td>
-                <td>${campaign.endDate}</td>
-                <td>${campaign.empId}</td>
-                <td>${campaign.cliId}</td>
-            `;
+            <td>${campaign.id}</td>
+            <td>${campaign.name}</td>
+            <td>${campaign.plannedRates}</td>
+            <td>${campaign.currentRates}</td>
+            <td>${campaign.startDate}</td>
+            <td>${campaign.endDate}</td>
+            <td>${campaign.empId}</td>
+            <td>${campaign.cliId}</td>
+        `;
         tableBody.appendChild(row);
     });
+
+    addRowClickEvent();
 }
+
+function addRowClickEvent() {
+    const tableRows = document.querySelectorAll('#campaignsTable tbody tr');
+    tableRows.forEach(row => {
+        console.log('Adding click event to row with data-id:', row.dataset.id);
+        row.addEventListener('click', () => {
+            const campaignId = row.dataset.id;
+            if (!campaignId) {
+                alert('Brak ID kampanii!');
+                return;
+            }
+            window.location.href = `/campaignDetails?id=${campaignId}`;
+        });
+    });
+}
+
