@@ -1,11 +1,17 @@
 package pl.pjatk.s24512.groovy.services
 
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.dao.DataAccessException
 import org.springframework.dao.EmptyResultDataAccessException
 import org.springframework.jdbc.core.JdbcTemplate
+import org.springframework.jdbc.core.RowMapper
 import org.springframework.stereotype.Service
+import pl.pjatk.s24512.groovy.logs.Logger
 import pl.pjatk.s24512.groovy.models.Campaign
 import pl.pjatk.s24512.groovy.models.Creation
+
+import java.sql.ResultSet
+import java.sql.SQLException
 
 @Service
 class CreationService {
@@ -25,15 +31,15 @@ class CreationService {
                                 isAnimated: rs.getBoolean("is_animated"),
                                 fileName: rs.getString("filename")
                         )
-                    } as org.springframework.jdbc.core.RowMapper<Creation>
+                    } as RowMapper<Creation>
             )
-        } catch (EmptyResultDataAccessException e) {
+        } catch (EmptyResultDataAccessException ignored) {
             return null
         }
     }
 
-    boolean createCreation(Creation creation) {
-        if(creation.id == Long.MAX_VALUE) return false
+    Creation createCreation(Creation creation) {
+        if(creation.id == Long.MAX_VALUE) return null
         String sql = "INSERT INTO creation (is_animated, filename) VALUES (?, ?)"
 
         try {
@@ -41,9 +47,29 @@ class CreationService {
                     sql,
                     [creation.isAnimated, creation.fileName] as Object[]
             )
-            return true
-        } catch (EmptyResultDataAccessException e) {
-            return false
+            return lastInsert()
+        } catch (EmptyResultDataAccessException ignored) {
+            return null
+        }
+    }
+
+    private Creation lastInsert() {
+        String selectSql = "SELECT * FROM creation WHERE id = LAST_INSERT_ID();"
+
+        try {
+            return jdbcTemplate.queryForObject(selectSql, new RowMapper<Creation>() {
+                @Override
+                Creation mapRow(ResultSet rs, int rowNum) throws SQLException {
+                    Creation newCreation = new Creation()
+                    newCreation.setId(rs.getLong("id"))
+                    newCreation.setFileName(rs.getString("filename"))
+                    newCreation.setIsAnimated(rs.getBoolean("is_animated"))
+                    Logger.info("CreationService.lastInsert: Output: ${newCreation}")
+                    return newCreation
+                }
+            })
+        } catch (EmptyResultDataAccessException ignored) {
+            return null
         }
     }
 }

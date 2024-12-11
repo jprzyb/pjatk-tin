@@ -122,6 +122,61 @@ app.get('/api/login', async (req, res) => {
     }
 });
 
+app.post('/api/campaign', async (req, res) => {
+    try {
+        // console.log("/api/campaign got: ", req.body);
+        // console.log("/api/campaign sends: ", JSON.stringify(req.body));
+
+        // Forward the request body to the backend service
+        const response = await fetch(`http://localhost:8080/api/campaign`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(req.body)
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        // console.log("/api/campaign response: ",data);
+
+        res.json(data); // Send the response back to the client
+    } catch (error) {
+        console.error('Error:', error.message);
+        res.status(500).json({ error: error.message }); // Send error response
+    }
+});
+
+app.post('/api/create_creation', async (req, res) => {
+    console.log("/api/campaign input: ", req.body);
+    console.log("/api/campaign output: ", JSON.stringify(req.body));
+    try {
+        const response = await fetch(`http://localhost:8080/api/create_creation`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(req.body)
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log("/api/campaign response: ", JSON.stringify(data));
+        res.json(data);
+    } catch (error) {
+        console.error('Error:', error.message);
+        res.status(500).json({ error: error.message });
+    }
+});
+
 //fetch functions
 
 const fetchEmployee = async (id) => {

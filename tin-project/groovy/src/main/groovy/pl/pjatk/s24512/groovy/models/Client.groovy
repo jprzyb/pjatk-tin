@@ -5,4 +5,14 @@ class Client {
     String name
     String bankAccount
     Date contractDate
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", bankAccount='" + bankAccount + '\'' +
+                ", contractDate=" + contractDate +
+                '}';
+    }
 }

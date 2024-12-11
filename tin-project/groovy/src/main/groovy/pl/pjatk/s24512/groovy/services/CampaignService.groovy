@@ -5,6 +5,7 @@ import org.springframework.dao.EmptyResultDataAccessException
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.core.RowMapper
 import org.springframework.stereotype.Service
+import pl.pjatk.s24512.groovy.logs.Logger
 import pl.pjatk.s24512.groovy.models.Campaign
 
 import java.sql.ResultSet
@@ -80,7 +81,7 @@ class CampaignService {
     }
 
     private Campaign lastInsert() {
-        String selectSql = "SELECT * FROM campaign WHERE id = LAST_INSERT_ID()"
+        String selectSql = "SELECT * FROM campaign WHERE id = LAST_INSERT_ID();"
 
         try {
             return jdbcTemplate.queryForObject(selectSql, new RowMapper<Campaign>() {

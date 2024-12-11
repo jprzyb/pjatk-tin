@@ -1,3 +1,7 @@
+window.onload = function() {
+    addClientsToTable(clientsData);
+};
+
 function addClientsToTable(clients) {
     const tableBody = document.querySelector("#clientsTable tbody");
 
@@ -26,53 +30,9 @@ function addClientsToTable(clients) {
     });
 }
 
-window.onload = function() {
-    addClientsToTable(clientsData);
-};
-
-const createCampaign = async (name, plannedRates, startDate, endDate, cliId, currentRates, empId) => {
-    try {
-        const url = `http://localhost:8080/api/campaign`;
-
-        const payload = {
-            id: 1,
-            name: name,
-            plannedRates: plannedRates,
-            startDate: startDate,
-            endDate: endDate,
-            cliId: cliId,
-            currentRates: currentRates,
-            empId: empId
-        };
-
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(payload)
-        });
-
-
-        if (response.ok) {
-            const data = await response.json();
-            console.log('Campaign created successfully:', data);
-            alert('Campaign created successfully');
-            window.location.href = `/new_creation?id=${encodeURIComponent(data.id)}`;
-        } else {
-            const error = await response.text();
-            console.error('Error creating campaign:', error);
-            alert('Failed to create campaign');
-        }
-    } catch (error) {
-        console.error('Error:', error);
-        alert('Cannot establish connection with the server.');
-    }
-};
-
-
-document.querySelector('#new-campaign').addEventListener('submit', (e) => {
+document.querySelector('#new-campaign').addEventListener('submit', async (e) => {
     e.preventDefault();
+
     const name = document.querySelector('#name').value;
     const plannedRates = document.querySelector('#plannedRates').value;
     const startDate = document.querySelector('#startDate').value;
@@ -81,11 +41,39 @@ document.querySelector('#new-campaign').addEventListener('submit', (e) => {
     const currentRates = document.querySelector('#currentRates').value;
     const empId = document.querySelector('#empId').value;
 
-    if(validate(name, plannedRates, startDate, endDate, cliId, currentRates, empId)) {
-        let response = createCampaign(name, plannedRates, startDate, endDate, cliId, currentRates, empId);
-        document.querySelector("#error").textContent = response;
+    if (validate(name, plannedRates, startDate, endDate, cliId, currentRates, empId)) {
+        try {
+            const response = await fetch('/api/campaign', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    name,
+                    plannedRates,
+                    startDate,
+                    endDate,
+                    cliId,
+                    currentRates,
+                    empId
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(`Błąd HTTP! Status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            console.log(data);
+            document.querySelector("#error").textContent = "Kampania została utworzona!";
+            window.location.href = `/new_creation?id=${data.id}`;
+        } catch (error) {
+            console.error('Error:', error.message);
+            document.querySelector("#error").textContent = `Wystąpił błąd: ${error.message}`;
+        }
     } else {
-        document.querySelector('#error').textContent = "Invalid data"
+        document.querySelector('#error').textContent = "Invalid data";
     }
 });
 
@@ -104,7 +92,7 @@ const validate = (name, plannedRates, startDate, endDate, cliId, currentRates, e
     let start = new Date(startDate);
     let end = new Date(endDate);
 
-    if (isNaN(start.getTime())) {
+    if (isNaN(start.getTime()) && startDate >= Date.now()) {
         alert('Invalid start date format');
         return false;
     }

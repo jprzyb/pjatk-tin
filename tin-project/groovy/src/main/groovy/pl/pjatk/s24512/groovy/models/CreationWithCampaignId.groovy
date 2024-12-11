@@ -1,14 +1,16 @@
 package pl.pjatk.s24512.groovy.models
 
-class Creation {
+class CreationWithCampaignId {
     Long id
+    Long campaignId
     boolean isAnimated
     String fileName
 
     @Override
-    public String toString() {
-        return "Creation{" +
+    String toString() {
+        return "CreationWithCampaignId{" +
                 "id=" + id +
+                ", campaignId=" + campaignId +
                 ", isAnimated=" + isAnimated +
                 ", fileName='" + fileName + '\'' +
                 '}';

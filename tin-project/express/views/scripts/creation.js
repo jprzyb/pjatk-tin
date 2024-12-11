@@ -1,10 +1,11 @@
 document.querySelector('#new-creation').addEventListener('submit', (e) => {
     e.preventDefault();
     const id = document.querySelector('#id').value;
-    const filePath = document.querySelector('#filePath').value;
+    const fileName = document.querySelector('#fileName').value;
+    const isAnimated = document.querySelector('#isAnimated').checked;
     const campaignId = document.querySelector('#campaignId').value;
-    if(validate(filePath)){
-        return createCreation(id, filePath, campaignId);
+    if(validate(fileName)){
+        return createCreation(id, fileName, isAnimated, campaignId);
     }
     return false;
 });
@@ -14,13 +15,14 @@ document.getElementById('skipButton').addEventListener('click', (e) => {
     window.location.href = `/campaigns`;
 });
 
-const createCreation = async (id, filePath,campaignId) => {
+const createCreation = async (id, fileName, isAnimated, campaignId) => {
     try {
-        const url = `http://localhost:8080/api/create_creation`;
+        const url = `/api/create_creation`;
 
         const payload = {
             id: 1,
-            filePath: filePath,
+            fileName: fileName,
+            isAnimated: isAnimated,
             campaignId: campaignId,
         };
 
@@ -35,9 +37,7 @@ const createCreation = async (id, filePath,campaignId) => {
 
         if (response.ok) {
             const data = await response.json();
-            console.log('Creation created successfully:', data);
-            alert('Creation created successfully');
-            window.location.href = `/campaigns`;
+            document.querySelector("#error").textContent = `${data.fileName} Added successfully. Want to add next?`;
         } else {
             const error = await response.text();
             console.error('Error creating creation:', error);
@@ -49,7 +49,7 @@ const createCreation = async (id, filePath,campaignId) => {
     }
 };
 
-function validate(filePath) {
+function validate(fileName) {
     const pathRegex = /^(\/|\.\/|\.\.\/)?([\w.-]+\/)*[\w.-]*$/;
-    return typeof filePath === 'string' && pathRegex.test(filePath);
+    return typeof fileName === 'string' && pathRegex.test(fileName);
 }

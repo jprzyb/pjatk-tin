@@ -9,4 +9,18 @@ class Campaign {
     Date endDate
     Long empId
     Long cliId
+
+    @Override
+    public String toString() {
+        return "Campaign{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", plannedRates=" + plannedRates +
+                ", currentRates=" + currentRates +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", empId=" + empId +
+                ", cliId=" + cliId +
+                '}';
+    }
 }
