@@ -54,6 +54,7 @@ app.get('/campaignDetails', async (req, res) => {
     if (req.session.user) {
         try {
             const campaign = await fetchCampaign(id);
+            const creations = await fetchCreations(campaign.id);
             res.render('pages/campaign', { user: req.session.user, campaign:campaign });
         } catch (error) {
             res.status(500).send('Error fetching campaign');
@@ -102,7 +103,6 @@ app.get('/logout', (req, res) => {
 });
 
 //API communication
-
 app.get('/api/login', async (req, res) => {
     const { login, password } = req.query;
 
@@ -152,8 +152,8 @@ app.post('/api/campaign', async (req, res) => {
 });
 
 app.post('/api/create_creation', async (req, res) => {
-    console.log("/api/campaign input: ", req.body);
-    console.log("/api/campaign output: ", JSON.stringify(req.body));
+    // console.log("/api/campaign input: ", req.body);
+    // console.log("/api/campaign output: ", JSON.stringify(req.body));
     try {
         const response = await fetch(`http://localhost:8080/api/create_creation`, {
             method: 'POST',
@@ -169,7 +169,33 @@ app.post('/api/create_creation', async (req, res) => {
         }
 
         const data = await response.json();
-        console.log("/api/campaign response: ", JSON.stringify(data));
+        // console.log("/api/campaign response: ", JSON.stringify(data));
+        res.json(data);
+    } catch (error) {
+        console.error('Error:', error.message);
+        res.status(500).json({ error: error.message });
+    }
+});
+
+app.post('/api/update_campaign', async (req, res) => {
+    console.log("/api/update_campaign input: ", req.body);
+    console.log("/api/update_campaign output: ", JSON.stringify(req.body));
+    try {
+        const response = await fetch(`http://localhost:8080/api/update_campaign`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(req.body)
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log("/api/update_campaign response: ", JSON.stringify(data));
         res.json(data);
     } catch (error) {
         console.error('Error:', error.message);
@@ -178,7 +204,6 @@ app.post('/api/create_creation', async (req, res) => {
 });
 
 //fetch functions
-
 const fetchEmployee = async (id) => {
     try {
         const response = await fetch(`http://localhost:8080/api/employee?id=${encodeURIComponent(id)}`, {
@@ -262,3 +287,24 @@ const fetchCampaign = async (id) => {
         throw error;
     }
 };
+
+const fetchCreations = async (id) => {
+    try {
+        const response = await fetch(`http://localhost:8080/api/creations_by_camp_id?id=${encodeURIComponent(id)}`, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error:', error);
+        throw error;
+    }
+}

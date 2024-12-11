@@ -37,4 +37,9 @@ class CampaignController {
     Campaign createCampaign(@RequestBody Campaign campaign) {
         return campaignService.createCampaign(campaign)
     }
+
+    @PostMapping("/update_campaign")
+    Campaign updateCampaign(@RequestBody Campaign campaign) {
+        return campaignService.updateCampaign(campaign)
+    }
 }

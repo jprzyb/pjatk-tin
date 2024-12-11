@@ -80,6 +80,26 @@ class CampaignService {
         }
     }
 
+    Campaign updateCampaign(Campaign campaign) {
+        String sql = "UPDATE campaign SET name = ?, planned_rates = ?, current_rates = ?, start_date = ?, end_date = ?, emp_id = ?, client_id = ? WHERE id = ?"
+
+        try {
+            int rowsAffected = jdbcTemplate.update(
+                    sql,
+                    [campaign.name, campaign.plannedRates, campaign.currentRates, campaign.startDate, campaign.endDate, campaign.empId, campaign.cliId, campaign.id] as Object[]
+            )
+
+            if (rowsAffected > 0) {
+                return getCampaignById(campaign.id)
+            } else {
+                return null
+            }
+        } catch (Exception ignored) {
+            return null
+        }
+    }
+
+
     private Campaign lastInsert() {
         String selectSql = "SELECT * FROM campaign WHERE id = LAST_INSERT_ID();"
 
