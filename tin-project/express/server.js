@@ -55,7 +55,7 @@ app.get('/campaignDetails', async (req, res) => {
         try {
             const campaign = await fetchCampaign(id);
             const creations = await fetchCreations(campaign.id);
-            res.render('pages/campaign', { user: req.session.user, campaign:campaign });
+            res.render('pages/campaign', { user: req.session.user, campaign:campaign, creations: JSON.stringify(creations) });
         } catch (error) {
             res.status(500).send('Error fetching campaign');
         }
