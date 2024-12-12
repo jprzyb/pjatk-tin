@@ -47,4 +47,9 @@ class CampaignCreationController {
         }
         return result
     }
+
+    @PostMapping("/remove_campaign_creation")
+    CampaignCreation removeCampaignCreation(@RequestBody CampaignCreation campaignCreation){
+        return campaignCreationService.removeCampaignCreation(campaignCreation)
+    }
 }

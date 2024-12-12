@@ -59,7 +59,7 @@ class CampaignCreationService {
                     [campaignCreation.campId, campaignCreation.creaId] as Object[]
             )
             return true
-        } catch (EmptyResultDataAccessException e) {
+        } catch (EmptyResultDataAccessException ignored) {
             return false
         }
     }
@@ -69,5 +69,18 @@ class CampaignCreationService {
             createCampaignCreation(c)
         }
         return true
+    }
+
+    CampaignCreation removeCampaignCreation(CampaignCreation campaignCreation) {
+        String sql = "DELETE FROM campaign_creation WHERE camp_id = ? AND crea_id = ?;"
+        try{
+            jdbcTemplate.update(
+                    sql,
+                    [campaignCreation.campId, campaignCreation.creaId] as Object[]
+            )
+            return campaignCreation
+        }catch (EmptyResultDataAccessException ignored){
+            return null;
+        }
     }
 }

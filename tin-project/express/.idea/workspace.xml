@@ -5,11 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3aed74b9-f5f2-4e24-9867-2becde3249c4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/scripts/campaigns.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/scripts/campaigns.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../groovy/src/main/groovy/pl/pjatk/s24512/groovy/controllers/CampaignController.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/../groovy/src/main/groovy/pl/pjatk/s24512/groovy/controllers/CampaignController.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../groovy/src/main/groovy/pl/pjatk/s24512/groovy/services/CampaignService.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/../groovy/src/main/groovy/pl/pjatk/s24512/groovy/services/CampaignService.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/views/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/partials/campaignDetails/creations.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/campaignDetails/creations.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/partials/creation/new_creation.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/creation/new_creation.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/partials/new_campaign/nc_form.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/new_campaign/nc_form.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/scripts/campaign.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/scripts/campaign.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,28 +40,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Node.js.server.js.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/ASRock/OneDrive/Pulpit/repositories/pjatk-tin/tin-project/express/views/partials/campaignDetails",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.general",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2024.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Node.js.server.js.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ASRock/OneDrive/Pulpit/repositories/pjatk-tin/tin-project/express/views/partials/campaignDetails&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2024.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ASRock\OneDrive\Pulpit\repositories\pjatk-tin\tin-project\express\views\partials\campaignDetails" />
@@ -103,6 +106,8 @@
       <workItem from="1733391318180" duration="19181000" />
       <workItem from="1733433974656" duration="4807000" />
       <workItem from="1733752197004" duration="10267000" />
+      <workItem from="1733931004056" duration="12027000" />
+      <workItem from="1733996202228" duration="5331000" />
     </task>
     <servers />
   </component>
@@ -114,7 +119,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/views/scripts/creation.js</url>
-          <line>11</line>
+          <line>12</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

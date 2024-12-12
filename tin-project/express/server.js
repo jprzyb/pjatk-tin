@@ -202,6 +202,31 @@ app.post('/api/update_campaign', async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
+app.post('/api/remove_campaign_creation', async (req, res) => {
+    console.log("/api/remove_campaign_creation input: ", req.body);
+    console.log("/api/remove_campaign_creation output: ", JSON.stringify(req.body));
+    try {
+        const response = await fetch(`http://localhost:8080/api/remove_campaign_creation`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(req.body)
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log("/api/update_campaign response: ", JSON.stringify(data));
+        res.json(data);
+    } catch (error) {
+        console.error('Error:', error.message);
+        res.status(500).json({ error: error.message });
+    }
+});
 
 //fetch functions
 const fetchEmployee = async (id) => {

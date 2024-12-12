@@ -102,7 +102,11 @@ th:hover {
 }
 
 tr:hover {
-    background-color: #f0f0f0;
+    background-color: #e2e2e2;
+}
+
+tr:hover .trash-icon {
+    background-color: #e74c3c;
 }
 
 footer {

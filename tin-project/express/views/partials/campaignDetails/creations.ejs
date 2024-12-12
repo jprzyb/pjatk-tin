@@ -1,13 +1,19 @@
-<table id="creationsTable">
-    <thead>
-    <tr>
-        <th data-column="id">ID</th>
-        <th data-column="fileName">File Name</th>
-        <th data-column="isAnimated">Is animated?</th>
-    </tr>
-    </thead>
-    <tbody>
-    </tbody>
-    <script>
-        const creationsData = <%- creations %>;
-    </script>
+<div>
+    <table id="creationsTable">
+        <thead>
+        <tr>
+            <th data-column="id">ID</th>
+            <th data-column="fileName">File Name</th>
+            <th data-column="isAnimated">Is animated?</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+
+        <button type="submit" id="addCreationButton" name="addCreationButton">Add Creation</button>
+        <label id="creationError" name="creationError"></label>
+
+        <script>
+            const creationsData = <%- creations %>;
+        </script>
+</div>

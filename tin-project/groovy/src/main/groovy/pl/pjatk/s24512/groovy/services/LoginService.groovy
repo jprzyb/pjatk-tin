@@ -5,7 +5,6 @@ import org.springframework.dao.EmptyResultDataAccessException
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.core.RowMapper
 import org.springframework.stereotype.Service
-import pl.pjatk.s24512.groovy.logs.Logger
 import pl.pjatk.s24512.groovy.models.Login
 
 import java.time.LocalDateTime
@@ -35,7 +34,6 @@ class LoginService {
                     } as RowMapper<Login>
             )
         } catch (EmptyResultDataAccessException e) {
-            Logger.error(e.getStackTrace())
             return null
         }
     }
@@ -54,7 +52,6 @@ class LoginService {
         } catch (Exception e) {
             e.printStackTrace()
         }
-        Logger.info("Session updated!")
     }
 
     Date session(long empId) {
@@ -68,10 +65,8 @@ class LoginService {
                 return null
             }
         } catch (EmptyResultDataAccessException e) {
-            Logger.error("$empId - ${e.message}")
             return null
         } catch (Exception e) {
-            Logger.error("${e.message}")
             return null
         }
     }

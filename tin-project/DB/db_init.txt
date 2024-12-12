@@ -1,0 +1,69 @@
+CREATE DATABASE tin_project;
+CREATE USER 'tin'@'localhost' IDENTIFIED BY 'admin'; 
+GRANT ALL PRIVILEGES ON tin_project.* TO 'tin'@'localhost';
+
+USE tin_project;
+
+-- Tabela: client
+CREATE TABLE client (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    bank_account VARCHAR(26),
+    contract_date DATE
+);
+
+-- Tabela: employee
+CREATE TABLE employee (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    pesel VARCHAR(11) NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    surname VARCHAR(50) NOT NULL,
+    employment_date DATE
+);
+
+-- Tabela: login
+CREATE TABLE login (
+    emp_id INT NOT NULL,
+    login VARCHAR(50) NOT NULL,
+    pass VARCHAR(255) NOT NULL,
+    session_exp_date DATETIME,
+    PRIMARY KEY (emp_id),
+    FOREIGN KEY (emp_id) REFERENCES employee(id)
+);
+
+-- Tabela: campaign
+CREATE TABLE campaign (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    planned_rates DECIMAL(10,2),
+    current_rates DECIMAL(10,2),
+    start_date DATE NOT NULL,
+    end_date DATE,
+    emp_id INT NOT NULL,
+    client_id INT NOT NULL,
+    FOREIGN KEY (emp_id) REFERENCES employee(id),
+    FOREIGN KEY (client_id) REFERENCES client(id)
+);
+
+-- Tabela: campaign_creation
+CREATE TABLE campaign_creation (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    creation_id INT NOT NULL,
+    campaign_id INT NOT NULL,
+    FOREIGN KEY (creation_id) REFERENCES creation(id),
+    FOREIGN KEY (campaign_id) REFERENCES campaign(id)
+);
+
+-- Tabela: creation
+CREATE TABLE creation (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    is_animated TINYINT(1),
+    filename VARCHAR(100)
+);
+
+DROP TABLE client;
+DROP TABLE employee;
+DROP TABLE login;
+DROP TABLE campaign;
+DROP TABLE campaign_creation;
+DROP TABLE creation;
