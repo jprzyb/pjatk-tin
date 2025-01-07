@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3aed74b9-f5f2-4e24-9867-2becde3249c4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/views/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/partials/campaignDetails/creations.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/campaignDetails/creations.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/partials/creation/new_creation.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/creation/new_creation.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/partials/new_campaign/nc_form.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/new_campaign/nc_form.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/scripts/campaign.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/scripts/campaign.js" afterDir="false" />
-    </list>
+    <list default="true" id="3aed74b9-f5f2-4e24-9867-2becde3249c4" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -108,6 +99,7 @@
       <workItem from="1733752197004" duration="10267000" />
       <workItem from="1733931004056" duration="12027000" />
       <workItem from="1733996202228" duration="5331000" />
+      <workItem from="1734007508736" duration="540000" />
     </task>
     <servers />
   </component>
